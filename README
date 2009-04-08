@@ -1,0 +1,5 @@
+Usage:
+
+include php # will install php command-line
+
+include php::apache # will install mod_php and enable it using apache::module
