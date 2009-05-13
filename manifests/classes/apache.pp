@@ -8,6 +8,7 @@ class php::apache::common inherits php {
       "set PHP/expose_php Off",
       "set PHP/enable_dl Off",
     ],
+    notify => Service["apache"],
   }
 
   apache::module { "php5":
