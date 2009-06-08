@@ -14,6 +14,7 @@ class php::apache::redhat inherits php::apache::common {
   }
 
   Augeas["default php.ini settings"] {
+    #TODO: remove load_path once 0.5.1 is released
     load_path => "/usr/share/augeas/lenses/contrib/",
   }
 

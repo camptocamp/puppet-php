@@ -1,6 +1,7 @@
 class php::apache::common inherits php {
 
   augeas { "default php.ini settings":
+    #TODO: remove load_path once 0.5.1 is released
     load_path => "/usr/share/augeas/lenses/",
     context => "/files/${phpini}",
     changes => [
