@@ -10,7 +10,7 @@ class php::apache::redhat inherits php::apache::common {
   file { "/etc/httpd/conf.d/php.conf":
     ensure => absent,
     require => Package["php"],
-    notify => Service["httpd"],
+    notify => Service["apache"],
   }
 
 }
