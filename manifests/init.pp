@@ -2,7 +2,7 @@ class php {
 
   case $operatingsystem {
 
-    Debian: {
+    Debian,Ubuntu: {
       include php::debian
     }
     RedHat,CentOS: {
