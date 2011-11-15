@@ -1,5 +1,3 @@
-import "*/*.pp"
-
 class php {
 
   case $operatingsystem {
@@ -17,15 +15,6 @@ class php {
       include php::redhat
     }
     default: { notice "Unsupported operatingsystem ${operatingsystem}" }
-  }
-
-}
-
-class php::apache inherits php {
-
-  case $operatingsystem {
-    Debian: { include php::apache::debian }
-    RedHat: { include php::apache::redhat }
   }
 
 }
