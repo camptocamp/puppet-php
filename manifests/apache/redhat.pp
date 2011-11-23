@@ -4,7 +4,7 @@ class php::apache::redhat inherits php::apache::common {
 
   file { "/etc/httpd/mods-available/php5.load":
     ensure => present,
-    source => "puppet:///php/httpd/php.load",
+    source => "puppet:///modules/php/httpd/php.load",
   }
 
   file { "/etc/httpd/conf.d/php.conf":
