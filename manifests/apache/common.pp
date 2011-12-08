@@ -12,6 +12,6 @@ class php::apache::common inherits php {
 
   apache::module { "php5":
     ensure => present,
-    require => Augeas["default php.ini settings"],
+    notify => Augeas["default php.ini settings"],
   }
 }
