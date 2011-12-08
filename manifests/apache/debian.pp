@@ -4,5 +4,9 @@ class php::apache::debian inherits php::apache::common {
     incl => "/etc/php5/apache2/php.ini",
   }
 
-  package { "libapache2-mod-php5": ensure => present }
+  package { "libapache2-mod-php5": 
+    ensure => present ,
+    notify => Apache::Module["php5"]
+  }
+
 }
