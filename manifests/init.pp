@@ -1,6 +1,6 @@
 class php {
 
-  case $operatingsystem {
+  case $::osfamily {
 
     Debian,Ubuntu: {
       include php::debian
@@ -8,7 +8,7 @@ class php {
     RedHat,CentOS: {
       include php::redhat
     }
-    default: { notice "Unsupported operatingsystem ${operatingsystem}" }
+    default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
 }

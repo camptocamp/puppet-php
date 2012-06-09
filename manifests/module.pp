@@ -1,6 +1,6 @@
 define php::module ($ensure="present") {
 
-  case $operatingsystem {
+  case $::osfamily {
 
     Debian,Ubuntu: {
       $phpprefix = "php5-"
@@ -8,7 +8,7 @@ define php::module ($ensure="present") {
     RedHat,CentOS: {
       $phpprefix = "php-"
     }
-    default: { notice "Unsupported operatingsystem ${operatingsystem}" }
+    default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
 
