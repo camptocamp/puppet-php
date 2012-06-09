@@ -1,6 +1,6 @@
 class php {
 
-  case $operatingsystem {
+  case $::osfamily {
 
     Debian: {
       $phpini = "/etc/php5/cli/php.ini"
@@ -14,7 +14,7 @@ class php {
 
       include php::redhat
     }
-    default: { notice "Unsupported operatingsystem ${operatingsystem}" }
+    default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
 }
