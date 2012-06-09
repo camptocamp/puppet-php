@@ -1,6 +1,6 @@
 class php::apache inherits php {
 
-  case $operatingsystem {
+  case $::osfamily {
     Debian: { include php::apache::debian }
     RedHat: { include php::apache::redhat }
   }
