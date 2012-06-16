@@ -8,7 +8,7 @@ class php {
 
       include php::debian
     }
-    RedHat: {
+    RedHat,CentOS: {
       $phpini = "/etc/php.ini"
       $phpinidir = "/etc/php.d/"
 
