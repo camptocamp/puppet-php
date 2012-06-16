@@ -5,7 +5,7 @@ class php {
     Debian: {
       include php::debian
     }
-    RedHat: {
+    RedHat,CentOS: {
       include php::redhat
     }
     default: { notice "Unsupported operatingsystem ${operatingsystem}" }
