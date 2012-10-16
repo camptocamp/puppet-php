@@ -1,7 +1,8 @@
 class php::apache::common inherits php {
 
   augeas { "default php.ini settings":
-    context => "/files/${phpini}",
+    incl    => $phpini,
+    lens    => 'PHP.lns',
     changes => [
       "set PHP/allow_url_fopen Off",
       "set PHP/expose_php Off",
