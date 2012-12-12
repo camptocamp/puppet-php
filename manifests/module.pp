@@ -8,7 +8,7 @@ define php::module ($ensure="present") {
     RedHat,CentOS: {
       $phpprefix = "php-"
     }
-    default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
+    default: { notice "Unsupported osfamily ${::osfamily}" }
   }
 
 

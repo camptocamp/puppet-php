@@ -8,7 +8,7 @@ class php {
     RedHat,CentOS: {
       include php::redhat
     }
-    default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
+    default: { notice "Unsupported osfamily ${::osfamily}" }
   }
 
 }
