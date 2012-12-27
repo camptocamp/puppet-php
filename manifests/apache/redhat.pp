@@ -1,6 +1,9 @@
 class php::apache::redhat inherits php::apache::common {
 
-  package { "php": ensure => present }
+  package { 'php':
+    ensure => present,
+    before => Augeas['default php.ini settings'],
+  }
 
   Augeas["default php.ini settings"] {
     incl => "/etc/php.ini",
