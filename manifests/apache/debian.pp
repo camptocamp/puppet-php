@@ -6,7 +6,7 @@ class php::apache::debian inherits ::php::apache::common {
 
   package { 'libapache2-mod-php5':
     ensure => present ,
-    before => Apache::Module['php5'],
+    before => [Apache::Module['php5'], Augeas['default php.ini settings']],
   }
 
 }
