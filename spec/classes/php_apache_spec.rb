@@ -6,8 +6,8 @@ describe 'php::apache', :type => 'class' do
       :osfamily => 'Darwin',
       :operatingsystem => 'Darwin',
     } }
-    it { should_not contain_package('php::apache::debian') }
-    it { should_not contain_package('php::apache::redhat') }
+    it { should_not include_class('php::apache::debian') }
+    it { should_not include_class('php::apache::redhat') }
   end
 
   context 'on a RedHat osfamily' do
@@ -16,7 +16,7 @@ describe 'php::apache', :type => 'class' do
       :operatingsystem => 'CentOS',
     } }
     it { should include_class('php::apache::redhat') }
-    it { should_not contain_package('php::apache::debian') }
+    it { should_not include_class('php::apache::debian') }
   end
 
   context 'on a Debian osfamily' do
@@ -25,6 +25,6 @@ describe 'php::apache', :type => 'class' do
       :operatingsystem => 'Ubuntu',
     } }
     it { should include_class('php::apache::debian') }
-    it { should_not contain_package('php::apache::redhat') }
+    it { should_not include_class('php::apache::redhat') }
   end
 end
