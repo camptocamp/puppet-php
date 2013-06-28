@@ -1,12 +1,15 @@
-define php::module ($ensure="present") {
+# Install PHP modules in an OS-agnostic fashion
+# Uses the resource name as part of the package name. Preprends an os-specific
+# prefix on supported platforms.
+define php::module ($ensure='present') {
 
   case $::osfamily {
 
     Debian,Ubuntu: {
-      $phpprefix = "php5-"
+      $phpprefix = 'php5-'
     }
     RedHat,CentOS: {
-      $phpprefix = "php-"
+      $phpprefix = 'php-'
     }
     default: { notice "Unsupported osfamily ${::osfamily}" }
   }

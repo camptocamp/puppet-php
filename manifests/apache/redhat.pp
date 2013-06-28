@@ -1,3 +1,5 @@
+# RedHat-specific resources for PHP Apache integration
+# Should not be called directly
 class php::apache::redhat inherits php::apache::common {
 
   package { 'php':
@@ -5,19 +7,19 @@ class php::apache::redhat inherits php::apache::common {
     before => Augeas['default php.ini settings'],
   }
 
-  Augeas["default php.ini settings"] {
-    incl => "/etc/php.ini",
+  Augeas['default php.ini settings'] {
+    incl => '/etc/php.ini',
   }
 
-  file { "/etc/httpd/mods-available/php5.load":
+  file { '/etc/httpd/mods-available/php5.load':
     ensure => present,
-    source => "puppet:///modules/php/httpd/php.load",
+    source => 'puppet:///modules/php/httpd/php.load',
   }
 
-  file { "/etc/httpd/conf.d/php.conf":
-    ensure => absent,
-    require => Package["php"],
-    notify => Service["apache"],
+  file { '/etc/httpd/conf.d/php.conf':
+    ensure  => absent,
+    require => Package['php'],
+    notify  => Service['apache'],
   }
 
 }
