@@ -12,16 +12,14 @@ define php::module ($ensure="present") {
   }
 
 
-  if defined(Package[$apache]) {
-    package { "${phpprefix}${name}":
-      ensure => $ensure,
-      notify => Service["apache"],
-    }
+  $manage_notify = defined( Package['apache'] ) ? {
+    true  => Service['apache'],
+    false => undef,
   }
-  else {
-    package { "${phpprefix}${name}":
-      ensure => $ensure,
-    }
+
+  package { "${phpprefix}${name}":
+    ensure => $ensure,
+    notify => $manage_notify,
   }
 
 }
