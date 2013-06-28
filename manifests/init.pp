@@ -1,11 +1,12 @@
+# Install support for PHP
 class php {
 
   case $::osfamily {
 
-    Debian,Ubuntu: {
+    Debian: {
       include php::debian
     }
-    RedHat,CentOS: {
+    RedHat: {
       include php::redhat
     }
     default: { notice "Unsupported osfamily ${::osfamily}" }

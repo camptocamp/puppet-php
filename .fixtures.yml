@@ -1,0 +1,5 @@
+fixtures:
+  repositories:
+    apache: 'https://github.com/camptocamp/puppet-apache.git'
+  symlinks:
+    php: "#{source_dir}"

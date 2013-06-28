@@ -1,3 +1,4 @@
+# Install support for PHP-FPM Fast-CGI implementation
 class php::fpm {
 
   case $::osfamily {
@@ -17,5 +18,6 @@ class php::fpm {
     'RedHat': {
       #TODO
     }
+    default: { notice("Unsupported osfamily ${::osfamily}") }
   }
 }
