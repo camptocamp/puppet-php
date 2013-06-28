@@ -15,8 +15,9 @@ describe 'php', :type => 'class' do
       :osfamily => 'RedHat',
       :operatingsystem => 'CentOS',
     } }
-    it { should include_class('php::redhat') }
-    it { should_not contain_package('php::debian') }
+
+    it { should contain_package('php-cli') }
+    it { should_not contain_package('php5-cli') }
   end
 
   context 'on a Debian osfamily' do
@@ -24,7 +25,8 @@ describe 'php', :type => 'class' do
       :osfamily => 'Debian',
       :operatingsystem => 'Ubuntu',
     } }
-    it { should include_class('php::debian') }
-    it { should_not contain_package('php::redhat') }
+
+    it { should contain_package('php5-cli') }
+    it { should_not contain_package('php-cli') }
   end
 end
