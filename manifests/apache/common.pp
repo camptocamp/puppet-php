@@ -10,7 +10,7 @@ class php::apache::common inherits php {
     notify => Service["apache"],
   }
 
-  apache::module { "php5":
+  apache_c2c::module { "php5":
     ensure => present,
     notify => Augeas["default php.ini settings"],
   }
