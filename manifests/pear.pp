@@ -1,4 +1,5 @@
-define php::pear ($ensure="present") {
+# Install PHP pear packages using the OS package manager
+define php::pear ($ensure='present') {
 
   case $::osfamily {
     Debian: { $phpprefix = 'php-' }

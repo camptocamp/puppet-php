@@ -1,3 +1,5 @@
+# Debian-specific implementation of PHP Apache integration
+# Should not be called directly
 class php::apache::debian inherits ::php::apache::common {
 
   Augeas['default php.ini settings'] {
