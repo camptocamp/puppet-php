@@ -23,7 +23,7 @@ describe 'php::apache', :type => 'class' do
         'set PHP/enable_dl Off',
       ],
     }) }
-    it { should contain_apache__module('php5') }
+    it { should contain_apache_c2c__module('php5') }
 
     context 'on a RedHat osfamily' do
       let(:facts) { {
