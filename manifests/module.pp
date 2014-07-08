@@ -15,8 +15,8 @@ define php::module ($ensure='present') {
   }
 
 
-  $manage_notify = defined( Package['apache'] ) ? {
-    true  => Service['apache'],
+  $manage_notify = defined( Package['httpd'] ) ? {
+    true  => Service['httpd'],
     false => undef,
   }
 

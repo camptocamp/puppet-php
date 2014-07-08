@@ -9,7 +9,7 @@ class php::apache::common inherits php {
       'set PHP/expose_php Off',
       'set PHP/enable_dl Off',
     ],
-    notify  => Service['apache'],
+    notify  => Service['httpd'],
   }
 
   apache_c2c::module { 'php5':
