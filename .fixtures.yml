@@ -1,5 +1,6 @@
 fixtures:
   repositories:
     apache_c2c: 'https://github.com/camptocamp/puppet-apache_c2c.git'
+    stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib.git'
   symlinks:
     php: "#{source_dir}"
