@@ -4,11 +4,10 @@
 define php::module ($ensure='present') {
 
   case $::osfamily {
-
-    Debian,Ubuntu: {
+    'Debian': {
       $phpprefix = 'php5-'
     }
-    RedHat,CentOS: {
+    'RedHat': {
       $phpprefix = 'php-'
     }
     default: { notice "Unsupported osfamily ${::osfamily}" }

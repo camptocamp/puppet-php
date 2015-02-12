@@ -6,14 +6,14 @@ class php::apache (
 ) inherits ::php {
 
   case $::osfamily {
-    Debian: { 
+    'Debian': {
       $php_ini = '/etc/php5/apache2/php.ini'
     }
-    RedHat: {
+    'RedHat': {
       $php_ini = '/etc/php.ini'
 
       file { '/etc/httpd/mods-available/php5.load':
-        ensure  => present,
+        ensure  => file,
         source  => 'puppet:///modules/php/httpd/php.load',
         require => Apache_c2c::Module['php5'],
         notify  => Service['httpd'],

@@ -2,8 +2,8 @@
 define php::pear ($ensure='present') {
 
   case $::osfamily {
-    Debian: { $phpprefix = 'php-' }
-    RedHat: { $phpprefix = 'php-pear-' }
+    'Debian': { $phpprefix = 'php-' }
+    'RedHat': { $phpprefix = 'php-pear-' }
     default: { notice "Unsupported osfamily ${::osfamily}" }
   }
 
