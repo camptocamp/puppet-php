@@ -1,51 +1,20 @@
 require 'spec_helper'
 
-describe 'php::apache', :type => 'class' do
-  context 'on an unsupported osfamily' do
-    let(:facts) { {
-      :osfamily => 'Darwin',
-      :operatingsystem => 'Darwin',
-    } }
-    it { should_not include_class('php::apache::debian') }
-    it { should_not include_class('php::apache::redhat') }
+describe 'php::apache' do
+
+  let(:pre_condition) do
+    "include ::apache_c2c"
   end
 
-  context 'on a supported osfamily' do
-    let(:facts) { {
-      :osfamily => 'RedHat',
-      :operatingsystem => 'CentOS',
-    } }
-    it { should contain_augeas('default php.ini settings').with({
-      :lens => 'PHP.lns',
-      :changes => [
-        'set PHP/allow_url_fopen Off',
-        'set PHP/expose_php Off',
-        'set PHP/enable_dl Off',
-      ],
-    }) }
-    it { should contain_apache_c2c__module('php5') }
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts.merge({
+          :concat_basedir => '/tmp',
+        })
+      end
 
-    context 'on a RedHat osfamily' do
-      let(:facts) { {
-        :osfamily => 'RedHat',
-        :operatingsystem => 'CentOS',
-      } }
-      it { should contain_augeas('default php.ini settings')\
-        .with_incl('/etc/php.ini') }
-      it { should contain_file('/etc/httpd/mods-available/php5.load')\
-        .with_ensure('present') }
-      it { should contain_file('/etc/httpd/conf.d/php.conf')\
-        .with_ensure('absent') }
-    end
-
-    context 'on a Debian osfamily' do
-      let(:facts) { {
-        :osfamily => 'Debian',
-        :operatingsystem => 'Ubuntu',
-      } }
-      it { should contain_augeas('default php.ini settings')\
-        .with_incl('/etc/php5/apache2/php.ini') }
-      it { should contain_package('libapache2-mod-php5') }
+      it { is_expected.to compile.with_all_deps }
     end
   end
 end

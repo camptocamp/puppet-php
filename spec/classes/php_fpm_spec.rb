@@ -1,35 +1,14 @@
 require 'spec_helper'
 
-describe 'php::fpm', :type => 'class' do
-  context 'on an unsupported osfamily' do
-    let(:facts) { {
-      :osfamily => 'Darwin',
-      :operatingsystem => 'Darwin',
-    } }
-    it { should_not contain_package('php5-fpm') }
-  end
+describe 'php::fpm' do
 
-  context 'on a RedHat osfamily' do
-    let(:facts) { {
-      :osfamily => 'RedHat',
-      :operatingsystem => 'CentOS',
-    } }
-    # Not implemented yet
-    #it { should include_class('php::redhat') }
-  end
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
 
-  context 'on a Debian osfamily' do
-    let(:facts) { {
-      :osfamily => 'Debian',
-      :operatingsystem => 'Ubuntu',
-    } }
-    it { should contain_package('php5-fpm').with_ensure('present') }
-    it { should contain_service('php5-fpm').with( {
-      :ensure => 'running',
-      :enable => true,
-      :hasstatus => true,
-      :hasrestart => true,
-    } ) }
+      it { is_expected.to compile.with_all_deps }
+    end
   end
-
 end
