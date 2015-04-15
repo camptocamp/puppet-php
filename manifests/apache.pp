@@ -14,7 +14,7 @@ class php::apache (
 
       file { '/etc/httpd/mods-available/php5.load':
         ensure  => file,
-        source  => 'puppet:///modules/php/httpd/php.load',
+        content => file('php/httpd/php.load'),
         require => Apache_c2c::Module['php5'],
         notify  => Service['httpd'],
       }
