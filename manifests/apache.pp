@@ -42,7 +42,7 @@ class php::apache (
   $_enable_dl = $enable_dl ? {
     true  => 'On', false => 'Off', default => $enable_dl,
   }
-    
+
   augeas { 'default php.ini settings':
     lens    => 'PHP.lns',
     incl    => $php_ini,
